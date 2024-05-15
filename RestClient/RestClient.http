@@ -1,0 +1,48 @@
+﻿@RestClient_HostAddress = http://localhost:5158
+@Protocol=https
+@Host = //reqres.in
+@HostAddress={{Protocol}}:{{Host}}
+@Username = george.bluth@reqres.in
+@contentType = application/json
+
+
+# ------------------------------------------------------------------
+# weatherforecast
+# ------------------------------------------------------------------
+GET {{RestClient_HostAddress}}/weatherforecast
+
+### Get User
+GET {{HostAddress}}/api/users
+
+### Register
+POST {{HostAddress}}/api/register
+Content-Type:{{contentType}}
+
+{
+    "email": "eve.holt@reqres.in",
+    "password": "pistol"
+}
+
+
+### Register Unsuccessful
+POST {{HostAddress}}/api/register
+Content-Type:{{contentType}}
+
+{
+    "email": "sydney@fife"
+}
+
+### Login
+POST {{HostAddress}}/api/login
+Content-Type:{{contentType}}
+
+{
+  "username": "{{Username}}",
+  "email": "{{Username}}",
+  "password": "some password"
+}
+
+### Get user by id
+GET {{HostAddress}}/api/users/2
+
+# End ...
